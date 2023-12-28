@@ -16,3 +16,27 @@ html {
   outline: none;
   box-shadow: none;
 }
+
+:root {
+  --header-height: 5.5rem;
+  --footer-height: 4rem;
+}
+
+.header-height {
+  height: var(--header-height);
+}
+
+.footer-height {
+  height: var(--footer-height);
+}
+
+.container-min-height {
+  min-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+}
+
+.home {
+  background: url("../assets/images/home-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
