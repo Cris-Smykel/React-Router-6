@@ -17,6 +17,12 @@ html {
   box-shadow: none;
 }
 
+@layer components {
+  body {
+    @apply bg-primary;
+  }
+}
+
 :root {
   --header-height: 5.5rem;
   --footer-height: 4rem;
