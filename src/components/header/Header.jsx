@@ -15,6 +15,15 @@ export default function Header() {
             <li>
               <Link
                 className="text-base text-customGray font-semibold hover:text-customBlack hover:underline transition-all duration-200"
+                to="/host"
+              >
+                host
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                className="text-base text-customGray font-semibold hover:text-customBlack hover:underline transition-all duration-200"
                 to="/about"
               >
                 about
