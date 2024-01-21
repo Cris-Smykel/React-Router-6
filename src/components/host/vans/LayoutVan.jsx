@@ -35,7 +35,7 @@ export default function LayoutVan() {
           <li>
             <NavLink
               end
-              className={({ isActive }) => isActive && "underline"}
+              className={({ isActive }) => (isActive ? "underline" : null)}
               to="."
             >
               Van
@@ -43,7 +43,7 @@ export default function LayoutVan() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => isActive && "underline"}
+              className={({ isActive }) => (isActive ? "underline" : null)}
               to="details"
             >
               Details
@@ -51,7 +51,7 @@ export default function LayoutVan() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => isActive && "underline"}
+              className={({ isActive }) => (isActive ? "underline" : null)}
               to="pricing"
             >
               Pricing
@@ -59,7 +59,7 @@ export default function LayoutVan() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => isActive && "underline"}
+              className={({ isActive }) => (isActive ? "underline" : null)}
               to="photos"
             >
               Photos
