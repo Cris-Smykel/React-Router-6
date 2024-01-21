@@ -18,7 +18,7 @@ export default function Header() {
     <header className="bg-primary header-height p-4 pt-9 pb-9 sm:p-6">
       <div className="flex items-center justify-between max-w-6xl m-auto">
         <h2>
-          <Link className="text-2xl font-bold text-black" to="/">
+          <Link className="text-2xl font-bold text-black" to=".">
             #VANLIFE
           </Link>
         </h2>
@@ -62,17 +62,17 @@ function getRoutesInfo() {
   return [
     {
       id: 1,
-      url: "/host",
+      url: "host",
       routeName: "Host",
     },
     {
       id: 2,
-      url: "/about",
+      url: "about",
       routeName: "About",
     },
     {
       id: 3,
-      url: "/vans",
+      url: "vans",
       routeName: "Vans",
     },
   ];

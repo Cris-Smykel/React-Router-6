@@ -14,8 +14,8 @@ export default function NavHost() {
   });
 
   return (
-    <nav>
-      <ul>{routesElements}</ul>
+    <nav className="p-4">
+      <ul className="flex gap-10 items-center">{routesElements}</ul>
     </nav>
   );
 }
@@ -26,7 +26,7 @@ function NavHostRouter(props) {
   return (
     <li>
       <NavLink
-        end
+        end={props.url == "." && true}
         className={({ isActive }) =>
           isActive ? `${navHostStyles} underline` : navHostStyles
         }
@@ -45,7 +45,7 @@ function getNavHostRouters() {
     {
       id: 1,
       routeName: "Dashboard",
-      url: "",
+      url: ".",
     },
     {
       id: 2,
