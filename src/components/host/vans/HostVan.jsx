@@ -1,34 +1,18 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useOutletContext, useParams } from "react-router-dom";
 
 export default function HostVan() {
-  const [vanData, setVanData] = useState(() => ({}));
-
+  const { vansData } = useOutletContext();
   const id = useParams().id;
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        const dataResponse = await fetch("/data/vans.json");
+  const vanDataToUse = vansData.filter((data) => {
+    return data.id == id;
+  });
 
-        if (!dataResponse.ok) {
-          return;
-        }
+  const vanData = vanDataToUse[0];
 
-        const dataToUse = await dataResponse.json();
-
-        const vanDataToUse = dataToUse.filter((data) => {
-          return data.id == id;
-        });
-
-        setVanData(vanDataToUse[0]);
-      } catch (error) {
-        window.alert("There was an error, please, try again later.");
-      }
-    }
-
-    getData();
-  }, []);
+  if (!vanData) {
+    return <h1 className="font-bold text-2xl text-blue-500">Loading...</h1>;
+  }
 
   return (
     <section>
