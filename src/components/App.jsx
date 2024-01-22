@@ -14,6 +14,7 @@ import LayoutVan from "./host/vans/LayoutVan";
 import Details from "./host/vans/Details";
 import Pricing from "./host/vans/Pricing";
 import Photos from "./host/vans/Photos";
+import NotFound from "./notFound/NotFound";
 
 export default function App() {
   return (
@@ -40,6 +41,8 @@ export default function App() {
               <Route path="photos" element={<Photos />} />
             </Route>
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
