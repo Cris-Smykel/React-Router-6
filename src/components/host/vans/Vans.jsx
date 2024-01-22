@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+
+export function loader() {
+  return getVansDataRequest();
+}
 
 export default function Vans() {
-  const [vansData, setVansData] = useState(() => []);
+  const vansData = useLoaderData();
 
-  const [loading, setLoading] = useState(() => true);
-  const [error, setError] = useState(() => null);
+  // const [vansData, setVansData] = useState(() => []);
+
+  // const [loading, setLoading] = useState(() => true);
+  // const [error, setError] = useState(() => null);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -23,28 +29,28 @@ export default function Vans() {
     );
   });
 
-  useEffect(() => {
-    const getVansData = async () => {
-      try {
-        let vansData = await getVansDataRequest();
+  // useEffect(() => {
+  //   const getVansData = async () => {
+  //     try {
+  //       let vansData = await getVansDataRequest();
 
-        if (orderBy) {
-          if (orderBy.toLocaleLowerCase() === "desc") {
-            vansData = vansData.reverse();
-          }
-        }
+  //       if (orderBy) {
+  //         if (orderBy.toLocaleLowerCase() === "desc") {
+  //           vansData = vansData.reverse();
+  //         }
+  //       }
 
-        setVansData(vansData);
-      } catch (error) {
-        setError(true);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       setVansData(vansData);
+  //     } catch (error) {
+  //       setError(true);
+  //       console.log(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    getVansData();
-  }, [orderBy]);
+  //   getVansData();
+  // }, [orderBy]);
 
   // function getSearchParams(key, value) {
   //   const sp = new URLSearchParams(searchParams);
@@ -70,23 +76,23 @@ export default function Vans() {
     });
   }
 
-  if (loading) {
-    return (
-      <div className="p-6">
-        <h1 className="text-2xl text-black font-bold">Loading...</h1>{" "}
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="p-6">
+  //       <h1 className="text-2xl text-black font-bold">Loading...</h1>{" "}
+  //     </div>
+  //   );
+  // }
 
-  if (error) {
-    return (
-      <div className="p-6">
-        <h1 className="text-2xl text-black font-bold">
-          There was an error, please try again later
-        </h1>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="p-6">
+  //       <h1 className="text-2xl text-black font-bold">
+  //         There was an error, please try again later
+  //       </h1>
+  //     </div>
+  //   );
+  // }
 
   return (
     <section className="mt-4 p-4">
