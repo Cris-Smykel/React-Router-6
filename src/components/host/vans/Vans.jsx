@@ -4,6 +4,9 @@ import { Link, useSearchParams } from "react-router-dom";
 export default function Vans() {
   const [vansData, setVansData] = useState(() => []);
 
+  const [loading, setLoading] = useState(() => true);
+  const [error, setError] = useState(() => null);
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const orderBy = searchParams.get("orderBy");
@@ -33,7 +36,10 @@ export default function Vans() {
 
         setVansData(vansData);
       } catch (error) {
+        setError(true);
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -62,6 +68,24 @@ export default function Vans() {
 
       return prevParams;
     });
+  }
+
+  if (loading) {
+    return (
+      <div className="p-6">
+        <h1 className="text-2xl text-black font-bold">Loading...</h1>{" "}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6">
+        <h1 className="text-2xl text-black font-bold">
+          There was an error, please try again later
+        </h1>
+      </div>
+    );
   }
 
   return (
@@ -194,6 +218,9 @@ async function getVansDataRequest() {
 
     return vansData;
   } catch (error) {
-    console.log(error);
+    throw {
+      success: false,
+      message: "There was an error fetching the Data.",
+    };
   }
 }
