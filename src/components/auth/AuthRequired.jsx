@@ -1,11 +1,20 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
 
 export default function AuthRequired() {
   const isLogged = false;
 
+  const currentRoute = useLocation().pathname;
+
   if (isLogged) {
+    if (currentRoute === "/login") {
+      return <Navigate to={"/"} />;
+    }
     return <Outlet />;
   }
 
-  return <h1>User is not logged</h1>;
+  if (!isLogged && currentRoute === "/login") {
+    return <Outlet />;
+  }
+
+  return <Navigate to={"login"} />;
 }

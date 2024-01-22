@@ -23,15 +23,18 @@ import Photos from "./host/vans/Photos";
 import NotFound from "./notFound/NotFound";
 import Errors from "./errors/Errors";
 import AuthRequired from "./auth/AuthRequired";
+import Login from "./auth/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
+
       <Route path="about" element={<About />} />
       <Route path="vans" element={<Vans />} />
       <Route path="vans/:id" element={<Van />} />
       <Route element={<AuthRequired />}>
+        <Route path="login" element={<Login />} />
         <Route path="host" element={<Host />}>
           <Route index element={<HostHome />} />
           <Route path="income" element={<Income />} />
