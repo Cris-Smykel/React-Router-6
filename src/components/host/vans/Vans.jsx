@@ -15,6 +15,7 @@ export default function Vans() {
         price={vanData.price}
         key={vanData.id}
         id={vanData.id}
+        searchParams={searchParams}
       />
     );
   });
@@ -169,7 +170,10 @@ export default function Vans() {
 function VansContainer(props) {
   return (
     <li className="w-fit">
-      <Link to={`/host/vans/${props.id}`}>
+      <Link
+        to={`/host/vans/${props.id}`}
+        state={{ search: props.searchParams.toString() }}
+      >
         <div>
           <div className="w-32 aspect-square bg-green-400"></div>
 
